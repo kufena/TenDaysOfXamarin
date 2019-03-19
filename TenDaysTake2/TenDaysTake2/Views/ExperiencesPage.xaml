@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:TenDaysTake2.ViewModels"
+             x:Class="TenDaysTake2.Views.ExperiencesPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <vm:ExperiencesVM x:Key="vm"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="New"
+                     BindingContext="{StaticResource vm}"
+                     Command="{Binding NewExperienceCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ListView BindingContext="{StaticResource vm}"
+                  ItemsSource="{Binding Experiences}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Title}"
+                              Detail="{Binding UpdatedAt}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>

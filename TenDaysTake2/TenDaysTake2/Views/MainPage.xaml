@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TenDaysTake2.Views"
+             x:Class="TenDaysTake2.Views.MainPage">
+    
+    <StackLayout Margin="16,20,16,0">
+        <Entry Text="{Binding Title, Mode=TwoWay}" Placeholder="Title:"/>
+        <Entry Text="{Binding Content, Mode=TwoWay}" VerticalOptions="FillAndExpand" Placeholder="Text:"/>
+
+        <Entry Text="{Binding Query, Mode=TwoWay}"
+                Style="{StaticResource mainEntryStyle}"
+                Placeholder="Search a nearby venue..."/>
+
+        <ListView x:Name="venuesListView"
+                  ItemsSource="{Binding Venues}"
+                  HeightRequest="20"
+                  Margin="-16,0"
+                  SelectedItem="{Binding SelectedVenue, Mode=TwoWay}"
+                  IsVisible="{Binding ShowVenues}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding name}"
+                              Detail="{Binding location.distance}"/> 
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <StackLayout IsVisible="{Binding ShowSelectedVenue}">
+            <Label Text="{Binding SelectedVenue.name}"
+           Style="{StaticResource titleLabelStyle}"/>
+            <Label Text="{Binding SelectedVenue.MainCategory}"
+           Style="{StaticResource subtitleLabelStyle}"/>
+            <Label Text="{Binding SelectedVenue.location.Coordinates}"
+           Style="{StaticResource detailLabelStyle}"/>
+        </StackLayout>
+
+        <Button Text="Save" 
+                Style="{StaticResource mainButtonStyle}"
+                Command="{Binding SaveCommand}"
+                CommandParameter="{Binding CanSave}"/>
+        <Button Text="Cancel"
+                Command="{Binding CancelCommand}" 
+                Style="{StaticResource cancelButtonStyle}"/>
+    </StackLayout>
+</ContentPage>
