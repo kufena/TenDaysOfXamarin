@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:TenDaysTake2.ViewModels"
+             x:Class="TenDaysTake2.Views.DetailPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <vm:DetailVM x:Key="vm"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Back"
+                     BindingContext="{StaticResource vm}"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout  Margin="16,20,16,0">
+            <Label x:Name="labelTitle" Style="{StaticResource titleLabelStyle}"/>
+            <Label x:Name="labelContent" Style="{StaticResource mainLabelStyle}"/>
+            <Button/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

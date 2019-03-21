@@ -26,5 +26,17 @@ namespace TenDaysTake2.Views
             base.OnAppearing();
             viewModel.ReadExperiences();
         }
+
+        public void TextCellTap1(object sender, System.EventArgs e)
+        {
+            var tc = sender as TextCell;
+            var obj = tc.BindingContext as Experience;
+
+            Console.WriteLine("what the?" + obj.Id);
+            Console.WriteLine("Hell yeah!");
+
+            App.Current.MainPage.Navigation.PushAsync(new DetailPage(obj));
+
+        }
     }
 }

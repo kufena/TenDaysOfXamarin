@@ -41,5 +41,15 @@ namespace TenDaysTake2.Models
                 return conn.Table<Experience>().ToList();
             }
         }
+
+        public static Experience GetExperience(int id)
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(App.DatabasePath))
+            {
+                conn.CreateTable<Experience>();
+                var experiences = conn.Table<Experience>().Where(e => (e.Id == id));
+                return experiences.FirstOrDefault();
+            }
+        }
     }
 }

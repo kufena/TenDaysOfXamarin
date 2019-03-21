@@ -20,7 +20,9 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell Text="{Binding Title}"
-                              Detail="{Binding UpdatedAt}"/>
+                              Detail="{Binding UpdatedAt}"
+                              AutomationId="{Binding Id}"
+                              Tapped="TextCellTap1"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
